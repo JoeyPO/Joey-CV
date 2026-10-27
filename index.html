@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蒲秋盈 Joey Pu — CV</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B3A5C'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23FAFAF7' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#1B3A5C; --ink-deep:#122942; --paper:#FAFAF7;
+    --line:#D9DCDF; --muted:#6B7280; --accent:#B8893A; --text:#1f2937;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:960px;margin:0 auto;padding:48px 32px 80px;}
+
+  /* ===== Lang toggle ===== */
+  .langbar{
+    position:fixed;top:20px;right:20px;z-index:50;
+    display:flex;border:1px solid var(--ink);background:var(--paper);
+    font-size:12px;letter-spacing:.1em;
+  }
+  .langbar button{
+    padding:7px 14px;background:transparent;border:none;cursor:pointer;
+    color:var(--ink);font-family:inherit;font-size:12px;letter-spacing:.1em;
+    transition:all .25s ease;
+  }
+  .langbar button.active{background:var(--ink);color:#fff;}
+  .langbar button:hover:not(.active){background:#EEF1F5;}
+
+  /* ===== Header ===== */
+  header{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:28px;margin-bottom:36px;
+    display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+  }
+  .eyebrow{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  h1.name{
+    font-family:Georgia,"Songti SC",serif;
+    font-size:56px;font-weight:400;color:var(--ink-deep);
+    letter-spacing:.02em;line-height:1.1;
+  }
+  .name .en{display:block;font-size:18px;color:var(--muted);letter-spacing:.15em;margin-top:8px;font-style:italic;}
+  .tagline{margin-top:18px;font-size:16px;color:var(--ink);max-width:560px;}
+  .contact{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 24px;font-size:13.5px;}
+  .contact span{display:inline-flex;align-items:center;gap:6px}
+  .contact svg{width:13px;height:13px;stroke:var(--ink);fill:none;stroke-width:1.6}
+
+  .portrait-wrap{position:relative;}
+  .portrait-wrap::before{content:"";position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--ink);z-index:0;}
+  .portrait{position:relative;z-index:1;width:160px;height:200px;object-fit:cover;object-position:top center;display:block;filter:grayscale(15%);}
+
+  /* ===== Sections ===== */
+  section{margin-bottom:40px;}
+  h2{
+    font-family:Georgia,"Songti SC",serif;
+    font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--ink);border-bottom:1px solid var(--line);
+    padding-bottom:8px;margin-bottom:20px;font-weight:600;
+  }
+  .about{font-size:15px;max-width:760px;}
+  .about strong{color:var(--ink-deep);font-weight:600}
+
+  /* ===== Stats ===== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);margin:24px 0;background:#fff;}
+  .stat{padding:18px 16px;border-right:1px solid var(--line);transition:background .3s;}
+  .stat:hover{background:#F4F6F9}
+  .stat:last-child{border-right:none}
+  .stat .num{font-family:Georgia,serif;font-size:26px;color:var(--ink);line-height:1.1;font-weight:600;font-variant-numeric:tabular-nums;}
+  .stat .lbl{font-size:11.5px;color:var(--muted);margin-top:4px;letter-spacing:.05em;}
+
+  /* ===== Timeline ===== */
+  .tl{display:grid;grid-template-columns:130px 20px 1fr;column-gap:14px}
+  .tl .when{font-size:12.5px;color:var(--muted);text-align:right;padding-top:3px;font-variant-numeric:tabular-nums;}
+  .tl .axis{position:relative;justify-self:center;width:100%}
+  .tl .axis::before{content:"";position:absolute;top:6px;bottom:-6px;left:50%;width:1px;background:var(--line);}
+  .tl .dot{position:relative;z-index:1;width:9px;height:9px;border-radius:50%;background:var(--ink);margin:6px auto 0;}
+  .tl .item{padding-bottom:26px;min-width:0}
+  .tl .item:last-child{padding-bottom:0}
+  .tl .item:last-child .axis::before{display:none}
+  h3.role{font-size:16px;color:var(--ink-deep);font-weight:600;}
+  .org{font-size:13.5px;color:var(--ink);margin:2px 0 8px;font-style:italic;}
+  .item ul{margin:6px 0 0 18px}
+  .item li{margin-bottom:5px;font-size:14px;}
+  .item li b{color:var(--ink-deep);font-weight:600}
+  .hl{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;}
+
+  /* ===== Two col ===== */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  h4.sub{font-size:13px;letter-spacing:.15em;color:var(--ink);text-transform:uppercase;margin-bottom:10px;font-weight:600;}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:12.5px;padding:4px 10px;border:1px solid var(--line);background:#fff;transition:all .25s;}
+  .tag:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px);}
+
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+  /* lang fade */
+  [data-lang-fade]{transition:opacity .25s ease;}
+  body.switching [data-lang-fade]{opacity:0;}
+
+  @media (max-width:680px){
+    .page{padding:28px 20px 60px}
+    header{grid-template-columns:1fr;gap:24px}
+    .portrait-wrap{justify-self:start}
+    h1.name{font-size:38px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .tl{grid-template-columns:96px 16px 1fr;column-gap:10px}
+    .cols{grid-template-columns:1fr;gap:24px}
+    .langbar{top:12px;right:12px}
+  }
+  @media print{
+    body{background:#fff;font-size:12pt}
+    .page{max-width:none;padding:0}
+    .langbar{display:none}
+    section{break-inside:avoid}
+    .portrait-wrap::before{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar" role="tablist" aria-label="Language">
+  <button id="btn-zh" onclick="setLang('zh')">中文</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="page" data-lang-fade>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div>
+      <div class="eyebrow" data-zh="Curriculum Vitae · 2026" data-en="Curriculum Vitae · 2026">Curriculum Vitae · 2026</div>
+      <h1 class="name">
+        <span data-zh="蒲秋盈" data-en="Joey Pu">蒲秋盈</span>
+        <span class="en" data-zh="Joey Qiu-Ying Pu" data-en="Pu Qiu-Ying · Joey">Joey Qiu-Ying Pu</span>
+      </h1>
+      <p class="tagline" data-zh="翻译与语言技术硕士在读 · 兼具跨境电商 / 海外红人营销实操经验 · 语言能力与技术工具复合背景"
+         data-en="MSc candidate in Translation &amp; Language Technology · Cross-border e-commerce &amp; overseas KOL marketing · Languages × Technology">
+        翻译与语言技术硕士在读 · 兼具跨境电商 / 海外红人营销实操经验 · 语言能力与技术工具复合背景
+      </p>
+      <div class="contact">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +86 138 0972 8727 · +852 5224 1368
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          joey0531po@163.com
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span data-zh="22 岁 · 中共党员" data-en="22 · CCP Member">22 岁 · 中共党员</span>
+        </span>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <img class="portrait" src="assets/portrait.jpg" alt="Portrait">
+    </div>
+  </header>
+
+  <!-- ===== Profile ===== -->
+  <section>
+    <h2 data-zh="个人简介" data-en="Profile">个人简介</h2>
+    <p class="about"
+       data-zh="香港理工大学 <strong>翻译与语言技术（MATLT）</strong>硕士在读，主攻本地化与自然语言处理；广东财经大学商务英语学士，专业成绩前 5%。具备 <strong>Cider 海外红人营销、跨境电商运营、专业翻译</strong> 多段实习经历，擅长将语言能力与数据化运营、脚本自动化工具结合；在校期间任学生会主席，具备组织协调与跨团队沟通经验。"
+       data-en="MSc candidate in <strong>Translation and Language Technology (MATLT)</strong> at The Hong Kong Polytechnic University, focusing on localization and NLP. B.A. in Business English from Guangdong University of Finance &amp; Economics (top 5%). Hands-on experience in <strong>overseas KOL marketing at Cider, cross-border e-commerce operations, and professional translation</strong>. Former Student Union President with strong organizational and cross-functional communication skills.">
+      香港理工大学 <strong>翻译与语言技术（MATLT）</strong>硕士在读，主攻本地化与自然语言处理；广东财经大学商务英语学士，专业成绩前 5%。具备 <strong>Cider 海外红人营销、跨境电商运营、专业翻译</strong> 多段实习经历，擅长将语言能力与数据化运营、脚本自动化工具结合；在校期间任学生会主席，具备组织协调与跨团队沟通经验。
+    </p>
+
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="45355" data-prefix="$">$0</div><div class="lbl" data-zh="Cider 实习期间贡献 GMV" data-en="GMV driven at Cider">Cider 实习期间贡献 GMV</div></div>
+      <div class="stat"><div class="num" data-count="1338" data-suffix="万">0</div><div class="lbl" data-zh="红人内容曝光 / 播放量" data-en="KOL impressions &amp; views">红人内容曝光 / 播放量</div></div>
+      <div class="stat"><div class="num" data-count="560" data-suffix="+">0</div><div class="lbl" data-zh="累计建联美区红人" data-en="US creators onboarded">累计建联美区红人</div></div>
+      <div class="stat"><div class="num" data-count="18.8" data-prefix="+" data-suffix="%" data-decimal="1">0</div><div class="lbl" data-zh="跨境电商任职期销售额提升" data-en="Sales growth during e-commerce tenure">跨境电商任职期销售额提升</div></div>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section>
+    <h2 data-zh="教育经历" data-en="Education">教育经历</h2>
+    <div class="tl">
+      <div class="when">2026.09 — <span data-zh="至今" data-en="Present">至今</span></div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="香港理工大学 · 翻译与语言技术（MATLT）硕士" data-en="The Hong Kong Polytechnic University · MSc in Translation &amp; Language Technology">香港理工大学 · 翻译与语言技术（MATLT）硕士</h3>
+        <div class="org">The Hong Kong Polytechnic University</div>
+        <ul>
+          <li data-zh="主修方向：<b>本地化、NLP、机器翻译与译后编辑、语料库语言学、翻译质量评估</b>。"
+              data-en="Focus: <b>localization, NLP, machine translation &amp; post-editing, corpus linguistics, translation quality assessment</b>.">
+            主修方向：<b>本地化、NLP、机器翻译与译后编辑、语料库语言学、翻译质量评估</b>。</li>
+          <li data-zh="技术实践：使用 <b>Codex</b> 编写脚本实现文本与翻译流程自动化；掌握 <b>Qwen-TTS</b> 语音合成并完成本地化部署。"
+              data-en="Technical practice: <b>Codex</b> scripting for automated text &amp; translation workflows; <b>Qwen-TTS</b> voice synthesis with local deployment.">
+            技术实践：使用 <b>Codex</b> 编写脚本实现文本与翻译流程自动化；掌握 <b>Qwen-TTS</b> 语音合成并完成本地化部署。</li>
+        </ul>
+      </div>
+
+      <div class="when">2022.09 — 2026.06</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="广东财经大学 · 商务英语 学士" data-en="Guangdong University of Finance &amp; Economics · B.A. in Business English">广东财经大学 · 商务英语 学士</h3>
+        <div class="org">Guangdong University of Finance &amp; Economics</div>
+        <ul>
+          <li data-zh="专业成绩 <span class='hl'>前 5%</span>，多次获校、院级奖学金；学科竞赛经验丰富。"
+              data-en="<span class='hl'>Top 5%</span> of cohort; multiple university &amp; faculty scholarships; broad competition experience.">
+            专业成绩 <span class="hl">前 5%</span>，多次获校、院级奖学金；学科竞赛经验丰富。</li>
+          <li data-zh="核心课程：国际贸易实务、跨境电商、国际商法、英美税法、市场营销、商务英语口笔译。"
+              data-en="Core courses: International Trade Practice, Cross-border E-commerce, International Business Law, Anglo-American Taxation, Marketing, Business Interpreting &amp; Translation.">
+            核心课程：国际贸易实务、跨境电商、国际商法、英美税法、市场营销、商务英语口笔译。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Experience ===== -->
+  <section>
+    <h2 data-zh="工作经历" data-en="Professional Experience">工作经历</h2>
+    <div class="tl">
+
+      <div class="when">2025.12 — 2026.04</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="海外 KOL / 红人营销实习生" data-en="Overseas KOL Marketing Intern">海外 KOL / 红人营销实习生</h3>
+        <div class="org" data-zh="Cider · 美国市场 TTS 团队" data-en="Cider · US Market, TTS Team">Cider · 美国市场 TTS 团队</div>
+        <ul>
+          <li data-zh="<b>红人开发与建联：</b>甄选并邀约美区红人，累计建联合作 <span class='hl'>560+</span> 名，跟进选品、订单与物流，保障合作落地。"
+              data-en="<b>KOL outreach:</b> sourced and onboarded <span class='hl'>560+</span> US creators; managed sampling, orders and logistics end-to-end.">
+            <b>红人开发与建联：</b>甄选并邀约美区红人，累计建联合作 <span class="hl">560+</span> 名，跟进选品、订单与物流，保障合作落地。</li>
+          <li data-zh="<b>内容效果运营：</b>跟进红人发布并完成素材归档与效果评估；实习期间个人跟进发帖 <span class='hl'>2,505 条</span>（出单 209 条），贡献 <span class='hl'>GMV $45,355</span>、曝光 / 播放量 <span class='hl'>1,338 万</span>。"
+              data-en="<b>Content performance:</b> tracked <span class='hl'>2,505 posts</span> (209 order-driving), drove <span class='hl'>$45,355 GMV</span> and <span class='hl'>13.38M impressions / views</span>.">
+            <b>内容效果运营：</b>跟进红人发布并完成素材归档与效果评估；实习期间个人跟进发帖 <span class="hl">2,505 条</span>（出单 209 条），贡献 <span class="hl">GMV $45,355</span>、曝光 / 播放量 <span class="hl">1,338 万</span>。</li>
+          <li data-zh="<b>流程优化：</b>独立负责美区 Free Sample 审核并建立留痕记录；主动提出优化建议，协助研发组开发审批插件，提升 TTS 团队样品审批效率，带动发货订单与 GMV 提升。"
+              data-en="<b>Process optimization:</b> owned the US Free Sample review workflow with a traceability log; proposed and co-built an approval plugin with R&D, lifting TTS team efficiency and driving order &amp; GMV growth.">
+            <b>流程优化：</b>独立负责美区 Free Sample 审核并建立留痕记录；主动提出优化建议，协助研发组开发审批插件，提升 TTS 团队样品审批效率，带动发货订单与 GMV 提升。</li>
+        </ul>
+      </div>
+
+      <div class="when">2025.10 — 2025.11</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="外贸业务实习生" data-en="Foreign Trade Business Intern">外贸业务实习生</h3>
+        <div class="org" data-zh="东莞东丽塑胶制品有限公司" data-en="Dongguan Dongli Plastic Products Co., Ltd.">东莞东丽塑胶制品有限公司</div>
+        <ul>
+          <li data-zh="陪同欧洲多国客户看厂选样，提供英文产品介绍与工厂讲解，配合完成商务沟通与选样登记。"
+              data-en="Hosted European clients for factory tours and sampling; delivered English product and factory presentations.">
+            陪同欧洲多国客户看厂选样，提供英文产品介绍与工厂讲解，配合完成商务沟通与选样登记。</li>
+          <li data-zh="协助外籍设计师布展，完成 MOQ 数据整理，参与包装测试视频拍摄及报告撰写。"
+              data-en="Assisted foreign designers with booth setup; prepared MOQ data; filmed packaging test videos and wrote reports.">
+            协助外籍设计师布展，完成 MOQ 数据整理，参与包装测试视频拍摄及报告撰写。</li>
+        </ul>
+      </div>
+
+      <div class="when">2025.07 — 2025.09</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="跨境电商运营" data-en="Cross-border E-commerce Operator">跨境电商运营</h3>
+        <div class="org" data-zh="广州狮爪网络科技有限公司 · 东南亚 TikTok / Shopee" data-en="Guangzhou Shizhua Network Technology · TikTok / Shopee (SEA)">广州狮爪网络科技有限公司 · 东南亚 TikTok / Shopee</div>
+        <ul>
+          <li data-zh="负责店铺日常运营（上新、Listing 优化、活动策划），及时处理店铺异常，维持好评率与信用度；任职期间订单量提升 <span class='hl'>15%</span>，销售额提升 <span class='hl'>18.8%</span>。"
+              data-en="Managed SEA storefronts (listings, campaigns, issue handling); grew orders <span class='hl'>+15%</span> and sales <span class='hl'>+18.8%</span> during tenure.">
+            负责店铺日常运营（上新、Listing 优化、活动策划），及时处理店铺异常，维持好评率与信用度；任职期间订单量提升 <span class="hl">15%</span>，销售额提升 <span class="hl">18.8%</span>。</li>
+          <li data-zh="使用平台推广工具分析流量数据、优化曝光 / 点击 / 转化；与海外 KOL / KOC 建联，结合广告推动潜力品动销。"
+              data-en="Leveraged platform analytics for traffic optimization; collaborated with overseas KOLs / KOCs and ads to drive top sellers.">
+            使用平台推广工具分析流量数据、优化曝光 / 点击 / 转化；与海外 KOL / KOC 建联，结合广告推动潜力品动销。</li>
+        </ul>
+      </div>
+
+      <div class="when">2024.08 — 2024.09</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="英语翻译实习生" data-en="English Translation Intern">英语翻译实习生</h3>
+        <div class="org" data-zh="上海译国译民翻译有限公司" data-en="Shanghai Yiguo Yimin Translation Co., Ltd.">上海译国译民翻译有限公司</div>
+        <ul>
+          <li data-zh="线上团队参与科技 / 商务领域中英互译项目，完成 <span class='hl'>2 万字</span> 稿件翻译量，把控交付质量与时效。"
+              data-en="Online team: tech &amp; business EN↔ZH translation, delivered <span class='hl'>20,000 words</span> with quality and on-time control.">
+            线上团队参与科技 / 商务领域中英互译项目，完成 <span class="hl">2 万字</span> 稿件翻译量，把控交付质量与时效。</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Campus ===== -->
+  <section>
+    <h2 data-zh="在校经历" data-en="Campus Leadership">在校经历</h2>
+    <div class="tl">
+
+      <div class="when">2024.06 — 2025.06</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="学生会主席" data-en="Student Union President">学生会主席</h3>
+        <div class="org" data-zh="广东财经大学外国语学院" data-en="School of Foreign Studies, GDUFE">广东财经大学外国语学院</div>
+        <ul>
+          <li data-zh="统筹学生会工作与活动，建立 <b>15+</b> 类活动方案案例库，定期评估并优化执行效率。"
+              data-en="Led the Student Union; built a playbook of <b>15+</b> activity templates and ran periodic efficiency reviews.">
+            统筹学生会工作与活动，建立 <b>15+</b> 类活动方案案例库，定期评估并优化执行效率。</li>
+          <li data-zh="搭建校友联络平台推进校企合作，累计举办 <b>8 场</b> 宣讲分享会，覆盖学生 <b>1,500+</b> 人次。"
+              data-en="Built an alumni liaison platform; organized <b>8</b> info sessions reaching <b>1,500+</b> students.">
+            搭建校友联络平台推进校企合作，累计举办 <b>8 场</b> 宣讲分享会，覆盖学生 <b>1,500+</b> 人次。</li>
+        </ul>
+      </div>
+
+      <div class="when">2024.01 — 2025.06</div>
+      <div class="axis"><div class="dot"></div></div>
+      <div class="item">
+        <h3 class="role" data-zh="财务助理" data-en="Finance Assistant">财务助理</h3>
+        <div class="org" data-zh="广东财经大学学生处" data-en="Student Affairs Office, GDUFE">广东财经大学学生处</div>
+        <ul>
+          <li data-zh="建库归档 <b>5,000+</b> 份资助档案，形成资助数据库，提效 <b>50%</b>；每月精准核算 <b>800+</b> 名学生薪资，<b>0 差错</b>。"
+              data-en="Archived <b>5,000+</b> aid records into a database (<b>50%</b> efficiency gain); processed monthly payroll for <b>800+</b> students with <b>zero errors</b>.">
+            建库归档 <b>5,000+</b> 份资助档案，形成资助数据库，提效 <b>50%</b>；每月精准核算 <b>800+</b> 名学生薪资，<b>0 差错</b>。</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Skills & Certs ===== -->
+  <section>
+    <h2 data-zh="证书与技能" data-en="Certificates &amp; Skills">证书与技能</h2>
+    <div class="cols">
+      <div>
+        <h4 class="sub" data-zh="证书" data-en="Certificates">证书</h4>
+        <div class="tags">
+          <span class="tag" data-zh="TEM-8 英语专八" data-en="TEM-8">TEM-8 英语专八</span>
+          <span class="tag" data-zh="TEM-4 英语专四" data-en="TEM-4">TEM-4 英语专四</span>
+          <span class="tag">CET-6</span>
+          <span class="tag" data-zh="雅思 6.5" data-en="IELTS 6.5">雅思 6.5</span>
+          <span class="tag" data-zh="法语初级" data-en="Basic French">法语初级</span>
+          <span class="tag" data-zh="普通话二甲" data-en="Mandarin Lv.2-A">普通话二甲</span>
+          <span class="tag" data-zh="C1 驾驶证" data-en="Class C1 Driving Lic.">C1 驾驶证</span>
+        </div>
+      </div>
+      <div>
+        <h4 class="sub" data-zh="工具与能力" data-en="Tools &amp; Competencies">工具与能力</h4>
+        <div class="tags">
+          <span class="tag" data-zh="中英口笔译" data-en="ZH-EN Interpreting &amp; Translation">中英口笔译</span>
+          <span class="tag" data-zh="本地化 / NLP" data-en="Localization / NLP">本地化 / NLP</span>
+          <span class="tag" data-zh="Codex 脚本开发" data-en="Codex Scripting">Codex 脚本开发</span>
+          <span class="tag" data-zh="Qwen-TTS 部署" data-en="Qwen-TTS Deployment">Qwen-TTS 部署</span>
+          <span class="tag">Python</span>
+          <span class="tag">Smartcat</span>
+          <span class="tag" data-zh="Excel / PPT" data-en="Excel / PowerPoint">Excel / PPT</span>
+          <span class="tag" data-zh="数据分析" data-en="Data Analysis">数据分析</span>
+          <span class="tag" data-zh="KOL 营销 / 内容策划" data-en="KOL Marketing / Content Strategy">KOL 营销 / 内容策划</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>蒲秋盈 Joey Pu · CV · 2026</span>
+    <span data-zh="欢迎索取推荐信 / References available upon request" data-en="References available upon request">欢迎索取推荐信 / References available upon request</span>
+  </footer>
+
+</div>
+
+<script>
+  // ===== Language switching =====
+  function setLang(lang){
+    document.body.classList.add('switching');
+    setTimeout(()=>{
+      document.querySelectorAll('[data-zh]').forEach(el=>{
+        const v = el.getAttribute('data-'+lang);
+        if(v!==null && v!=='') el.innerHTML = v;
+      });
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.getElementById('btn-zh').classList.toggle('active', lang==='zh');
+      document.getElementById('btn-en').classList.toggle('active', lang==='en');
+      try{ localStorage.setItem('cv-lang', lang); }catch(e){}
+      document.body.classList.remove('switching');
+    }, 220);
+  }
+
+  // Init: localStorage > browser language > zh
+  let init = 'zh';
+  try{
+    const saved = localStorage.getItem('cv-lang');
+    if(saved) init = saved;
+    else if(navigator.language && navigator.language.toLowerCase().startsWith('en')) init = 'en';
+  }catch(e){}
+  setLang(init === 'zh' ? 'zh' : 'en');
+  // immediately (no fade on first load)
+  document.querySelectorAll('[data-zh]').forEach(el=>{
+    const v = el.getAttribute('data-'+init);
+    if(v!==null && v!=='') el.innerHTML = v;
+  });
+  document.documentElement.lang = init === 'zh' ? 'zh-CN' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', init==='zh');
+  document.getElementById('btn-en').classList.toggle('active', init==='en');
+  document.body.classList.remove('switching');
+
+  // ===== Count-up (only first time) =====
+  function runCount(el){
+    if(el.dataset.done) return;
+    el.dataset.done = '1';
+    const target = parseFloat(el.dataset.count);
+    const dec = parseInt(el.dataset.decimal||'0');
+    const prefix = el.dataset.prefix||'';
+    const suffix = el.dataset.suffix||'';
+    const dur = 1400;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min(1,(now-start)/dur);
+      const eased = 1 - Math.pow(1-p,3);
+      const v = target*eased;
+      let str = dec ? v.toFixed(dec) : Math.round(v).toLocaleString();
+      el.textContent = prefix + str + suffix;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('load', ()=>{
+    document.querySelectorAll('[data-count]').forEach(runCount);
+  });
+</script>
+</body>
+</html>
